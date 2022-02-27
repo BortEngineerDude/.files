@@ -9,8 +9,26 @@ Plug 'natebosch/vim-lsc'
 Plug 'ajh17/VimCompletesMe'
 "File tree viewer
 Plug 'lambdalisue/fern.vim'
+"Replace netrw with fern
+Plug 'lambdalisue/fern-hijack.vim'
 
 call plug#end()
+
+nnoremap <silent> <Leader>ee :<C-u>Fern <C-r>=<SID>smart_path()<CR><CR>
+
+" Return a parent directory of the current buffer when the buffer is a file.
+" Otherwise it returns a current working directory.
+function! s:smart_path() abort
+  if !empty(&buftype) || bufname('%') =~# '^[^:]\+://'
+    return fnamemodify('.', ':p')
+  endif
+  return fnamemodify(expand('%'), ':p:h')
+endfunction
+
+augroup my-fern-startup
+  autocmd! *
+  autocmd VimEnter * ++nested Fern . -drawer
+augroup END
 
 "interface
 set number          "show line number of current line
