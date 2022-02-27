@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#Battery script for i3blocks with nerdfont
+
 DISCHARGE_0=
 DISCHARGE_10=
 DISCHARGE_20=
@@ -24,16 +26,10 @@ CHARGE_80=
 CHARGE_90=
 CHARGE_100=
 
-print() {
-    echo ${!ICON} $CHARGE%
-    exit 0
-}
-
-ICON=?
-
-CHARGING=`acpi -b | grep -o Charging`
-CHARGE=`acpi -b | grep -E "[0-9]{1,3}%" -o`
-CHARGE=`echo $CHARGE | grep -E "[0-9]{1,3}" -o`
+ACPI=`acpi -b`
+CHARGING=`echo $ACPI | grep -o Charging`
+CHARGE=`echo $ACPI | grep -E "[0-9]{1,3}%" -o`
+CHARGE=${CHARGE%?}
 
 for PERCENT in `seq 100 -10 0`; do
     if [ $CHARGE -ge $PERCENT ]; then
@@ -41,6 +37,22 @@ for PERCENT in `seq 100 -10 0`; do
         if [ -z $CHARGING ]; then
             ICON="DIS$ICON"
         fi
-        print
+        
+        TEXT="${!ICON} $CHARGE%"
+        
+        if [ $CHARGE -le 20 ]; then
+            COLOR="#FF8000"                  
+        else
+            COLOR="#FFFFFF"
+        fi
+
+        if [ $CHARGE -le 5 ]; then
+            URGENT="true"                  
+        else
+            URGENT="false"                  
+        fi
+
+        printf '{"full_text": "%s", "color": "%s", "urgent": "%s"}\n' "$TEXT" "$COLOR" "$URGENT"
+        exit
     fi
 done
