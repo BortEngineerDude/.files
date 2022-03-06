@@ -92,7 +92,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-bindsym $mod+Shift+f exec $HOME/.config/i3/superfullscreen.sh
+bindsym $mod+Shift+f exec $HOME/.local/bin/superfullscreen.sh
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -245,7 +245,6 @@ bar
 # User config
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id "setxkbmap -layout us,ru -option grp:alt_shift_toggle"
-exec --no-startup-id export QT_QPA_PLATFORMTHEME=gnome
 exec --no-startup-id picom
 
 bindsym $mod+ctrl+h move workspace to output right
@@ -255,3 +254,5 @@ bindsym $mod+shift+s exec xfce4-screenshooter -r
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+bindsym XF86TouchpadToggle exec $HOME/.local/bin/toggletouchpad.sh
