@@ -256,3 +256,6 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 bindsym XF86TouchpadToggle exec $HOME/.local/bin/toggletouchpad.sh
+
+bindsym XF86MonBrightnessDown exec $HOME/.local/bin/backlight.sh -dec
+bindsym XF86MonBrightnessUp exec $HOME/.local/bin/backlight.sh -inc
