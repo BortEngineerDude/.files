@@ -15,6 +15,9 @@ alias .....="cd ../../../.."
 alias ls="ls -lah ${colorflag}"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME"
 
+#.local/bin PATH
+export PATH=$PATH:$HOME/.local/bin
+
 #history
 HISTFILE=~/.histfile
 HISTSIZE=1000
