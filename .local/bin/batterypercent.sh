@@ -26,9 +26,9 @@ CHARGE_80=
 CHARGE_90=
 CHARGE_100=
 
-ACPI=`acpi -b`
-CHARGING=`echo $ACPI | grep -o Charging`
-CHARGE=`echo $ACPI | grep -E "[0-9]{1,3}%" -o`
+ACPI=`acpi -ab`
+CHARGING=`echo "$ACPI" | grep -o on-line`
+CHARGE=`echo "$ACPI" | grep -E "[0-9]{1,3}%" -o`
 CHARGE=${CHARGE%?}
 
 for PERCENT in `seq 100 -10 0`; do
