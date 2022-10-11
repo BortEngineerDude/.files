@@ -40,6 +40,12 @@ set showmatch		"highlights matching brackets on cursor hover
 set ruler		    "show cursor position in status bar
 set showcmd		    "shows the normal mode command before it gets executed
 
+"powerline
+"see https://wiki.archlinux.org/index.php/Powerline#Vim
+"let g:powerline_pycmd="py"
+set rtp+=/usr/share/powerline/bindings/vim
+set laststatus=2
+
 "search
 set hlsearch		"highlights searches
 set incsearch		"incremental search (searches character by character)

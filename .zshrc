@@ -18,6 +18,10 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME"
 #.local/bin PATH
 export PATH=$PATH:$HOME/.local/bin
 
+#fancy line
+powerline-daemon -q
+. /usr/share/powerline/bindings/zsh/powerline.zsh
+
 #history
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -26,19 +30,42 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 
-#key bindings
+#keybinds
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[5~" beginning-of-history
+bindkey "^[[6~" end-of-history
+bindkey "^[[3~" delete-char
+bindkey "^[[2~" quoted-insert
+bindkey "^[[5C" forward-word
 bindkey "5C" forward-word
+bindkey "eOc" emacs-forward-word
 bindkey "5D" backward-word
+bindkey "eOd" emacs-backward-word
+bindkey "ee[C" forward-word
+bindkey "ee[D" backward-word
+bindkey "^H" backward-delete-word
+# for rxvt
+bindkey "^[[8~" end-of-line
+bindkey "^[[7~" beginning-of-line
+# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+bindkey "eOH" beginning-of-line
+bindkey "eOF" end-of-line
+# for freebsd console
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+# completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix
 
 #colors
 autoload -U colors
 colors
 
 #prompt
-autoload -U promptinit
-promptinit
+#autoload -U promptinit
+#promptinit
 
-PROMPT="[%B%F{32}%n%f%b@%B%F{240}%m%f%b] %0~ >"
+#PROMPT="[%B%F{32}%n%f%b@%B%F{240}%m%f%b] %0~ >"
 
 #autocompletion
 autoload -Uz compinit
