@@ -2,6 +2,15 @@
 
 # based on https://michaelabrahamsen.com/posts/custom-lockscreen-i3lock/
 
+# forcibly switch layout to English to remove guesswork when entering password
+# 'xkb-switch -s us' breaks all other layouts, so cycle between them instead
+layout=`xkb-switch`
+while [ $layout != "us" ]
+    do
+        xkb-switch -n
+        layout=`xkb-switch` 
+    done
+
 # set the icon and a temporary location for the screenshot to be stored
 icon="$HOME/Images/flaticon.com-creative-stall-premium-lock.png"
 tmpbg='/tmp/screen.png'
