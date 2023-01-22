@@ -34,6 +34,9 @@ exec --no-startup-id nm-applet
 #Bluetooth manager tray
 exec --no-startup-id blueman-applet 
 
+#Synchronize stuff
+exec --no-startup-id syncthing
+
 #Use gnome-polkit
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
