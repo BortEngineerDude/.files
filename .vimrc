@@ -3,12 +3,14 @@ call plug#begin('~/.vim/userplugins')
 
 "Smooth scrolling
 Plug 'psliwka/vim-smoothie'
+"clang-format integration
+Plug 'rhysd/vim-clang-format'
 "Language Server Client
 Plug 'natebosch/vim-lsc'
 "Improved autocomplete
 Plug 'ajh17/VimCompletesMe'
 "File tree viewer
-Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern.vim', { 'branch' : 'main' }
 "Replace netrw with fern
 Plug 'lambdalisue/fern-hijack.vim'
 
@@ -97,3 +99,11 @@ let g:lsc_enable_autocomplete  = v:true
 let g:lsc_enable_diagnostics   = v:true
 let g:lsc_reference_highlights = v:true
 let g:lsc_trace_level          = 'off'
+
+"Configure clang-format
+let g:clang_format#code_style = "llvm"
+let g:clang_format#auto_format_on_insert_leave = 1
+let g:clang_format#auto_format = 1
+let g:clang_format#detect_style_file = 1
+
+
