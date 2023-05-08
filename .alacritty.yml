@@ -2,7 +2,7 @@ colors:
   # Default colors
   primary:
     background: '0x000000'
-    foreground: '0xffffff'
+    foreground: '0xdddddd'
 
   # Normal colors
   normal:
@@ -10,10 +10,10 @@ colors:
     red:     '0x6b6b6b'
     green:   '0xc4c4c4'
     yellow:  '0xb3b3b3'
-    blue:    '0x999999'
+    blue:    '0x9999ff'
     magenta: '0x717171'
     cyan:    '0x8a8a8a'
-    white:   '0xb5cabb'
+    white:   '0xb5bbca'
 
   # Bright colors
   bright:
@@ -21,10 +21,10 @@ colors:
     red:     '0x464646'
     green:   '0xf8f8f8'
     yellow:  '0xeeeeee'
-    blue:    '0x7c7c7c'
+    blue:    '0x7c7cff'
     magenta: '0xadadad'
     cyan:    '0xc0c0c0'
-    white:   '0x99ac9e'
+    white:   '0x999eac'
 
 font:
   normal:
@@ -43,7 +43,7 @@ font:
     family: 'FiraCode Nerd Font Mono'
     style: Bold Italic
 
-  size: 11
+  size: 9
 
 key_bindings:
   - { key: K, mods: Control, mode: ~Vi|~Search, chars: "\x0c"}

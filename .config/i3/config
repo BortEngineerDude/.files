@@ -34,9 +34,6 @@ exec --no-startup-id nm-applet
 #Bluetooth manager tray
 exec --no-startup-id blueman-applet 
 
-#Synchronize stuff
-exec --no-startup-id syncthing
-
 #Use gnome-polkit
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -117,7 +114,7 @@ bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 " 
+set $ws1 "1  " 
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
@@ -129,7 +126,6 @@ set $ws9 "9"
 set $ws10 "10"
 
 assign [class="firefox"] $ws1
-assign [class="hl2_linux"] $ws2
 assign [class="steam_app_*"] $ws2
 assign [class="obs"] $ws10
 
@@ -191,26 +187,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# set $ind #0f0f0f
-# set $bga #505050 
-# set $bgi #2c2c2c
-# set $txt #dcdccc
-# set $txi #6d6d7a
-# set $wrn #f67400
-# set $blu #0b4685
+set $c_black        #000000
+set $c_darkgray     #101010
+set $c_gray         #1f1f1f
+set $c_lightgray    #3f3f3f
+set $c_orange       #f67400
+set $c_blue         #0b4685
+set $c_white        #ffffff
 
-set $bg  #000000
-set $ind #0f0f0f
-set $bga #ffffff
-set $bgi #1f1f1f
-set $txt #ffffff
-set $txi #000000
-set $wrn #f67400
-set $blu #0b4685
-
-client.focused 			    $bga $bga $txi $blu $bga
-client.unfocused		    $bgi $bgi $txt $blu $bgi
-client.focused_inactive		$bgi $bgi $txi $blu $bgi
+# <colorclass>              <border>         <background>     <text>          <indicator>    <child_border>
+client.focused 			    $c_lightgray     $c_lightgray     $c_black        $c_blue        $c_lightgray
+client.unfocused		    $c_darkgray      $c_darkgray      $c_lightgray    $c_blue        $c_darkgray
+client.focused_inactive		$c_gray          $c_gray          $c_lightgray    $c_blue        $c_gray
 
 for_window [class=".*"] border pixel 1
 smart_gaps on
@@ -224,14 +212,18 @@ gaps outer 0
 bar 
 {	
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	colors {
-	background $bg
-	focused_workspace $bga $bga $txi
-	active_workspace $bg $bg $txt
-	inactive_workspace $bg $bg $txt
-	urgent_workspace $wrn $wrn $txt
-	binding_mode $ind $ind $txt
-	}
+    colors {
+        background $c_black
+        statusline $c_white
+        separator  $c_black
+
+        # <colorclass>      <border>        <background>        <text>
+        focused_workspace   $c_lightgray    $c_lightgray        $c_black
+        active_workspace    $c_gray         $c_gray             $c_lightgray
+        inactive_workspace  $c_gray         $c_black            $c_lightgray
+        urgent_workspace    $c_orange       $c_orange           $c_black
+        binding_mode        $c_blue         $c_blue             $c_black 
+    }
 }
 
 # User config
@@ -245,7 +237,7 @@ exec --no-startup-id picom
 bindsym $mod+ctrl+h move workspace to output right
 bindsym $mod+ctrl+l move workspace to output left
 
-bindsym $mod+shift+s exec xfce4-screenshooter -r
+bindsym $mod+shift+s  exec xfce4-screenshooter -r
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
