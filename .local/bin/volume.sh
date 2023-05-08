@@ -2,10 +2,10 @@
 
 #Volume script for i3blocks with nerdfont
 
-VOLUME_0=奄
-VOLUME_33=奔
-VOLUME_66=墳
-VOLUME_MUTE=婢
+VOLUME_0=󰕿
+VOLUME_33=󰖀
+VOLUME_66=󰕾
+VOLUME_MUTE=󰝟
 
 COLOR="NULL"
 ICON="NULL"
