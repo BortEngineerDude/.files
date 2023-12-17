@@ -3,20 +3,34 @@ call plug#begin('~/.vim/userplugins')
 
 "Smooth scrolling
 Plug 'psliwka/vim-smoothie'
+
 "clang-format integration
 Plug 'rhysd/vim-clang-format'
+
 "Language Server Client
 Plug 'natebosch/vim-lsc'
-"Improved autocomplete
-Plug 'ajh17/VimCompletesMe'
+
+"CMake integration
+Plug 'cdelledonne/vim-cmake'
+
 "File tree viewer
 Plug 'lambdalisue/fern.vim', { 'branch' : 'main' }
+
 "Replace netrw with fern
 Plug 'lambdalisue/fern-hijack.vim'
+
+"Fancy statusline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"Better autocompletion control
+Plug 'ervandew/supertab'
 
 call plug#end()
 
 nnoremap <silent> <Leader>ee :<C-u>Fern <C-r>=<SID>smart_path()<CR><CR>
+
+nnoremap <C-s> :wa <bar> :mksession! session.vim<CR><CR>
 
 "Return a parent directory of the current buffer when the buffer is a file.
 "Otherwise it returns a current working directory.
@@ -35,18 +49,13 @@ endfunction
 "interface
 set number          "show line number of current line
 set relativenumber	"show line numbers relative to the current line
-set wildmenu		"enable a menu that shows tab completion options in the status bar
-set wildchar=<TAB>  "show possible completions.
-set wildmode=list:longest
-set showmatch		"highlights matching brackets on cursor hover
-set ruler		    "show cursor position in status bar
-set showcmd		    "shows the normal mode command before it gets executed
-
-"powerline
-"see https://wiki.archlinux.org/index.php/Powerline#Vim
-"let g:powerline_pycmd="py"
-set rtp+=/usr/share/powerline/bindings/vim
-set laststatus=2
+set wildmenu		    "enable a menu that shows tab completion options in the status bar
+set wildchar=^I     "show possible completions.
+set wildmode=longest:full,full "complete the next full match using the longest common string
+set wildoptions=pum "show complietion options in a pop up menu
+set showmatch		    "highlights matching brackets on cursor hover
+set ruler		        "show cursor position in status bar
+set showcmd		      "shows the normal mode command before it gets executed
 
 "search
 set hlsearch		"highlights searches
@@ -55,9 +64,9 @@ set ignorecase		"ignores the case of a search
 set smartcase		"only ignores case if there are no capital letters in search (only works after ignorecase has been set)
 
 "indenting
-set tabstop=4		"the amount of spaces that vim will equate to a tab character
-set softtabstop=4	"like tabstop, but for editing operations (insert mode)
-set shiftwidth=4	"used for autoindent and << and >> operators in normal mode
+set tabstop=2		"the amount of spaces that vim will equate to a tab character
+set softtabstop=2	"like tabstop, but for editing operations (insert mode)
+set shiftwidth=2	"used for autoindent and << and >> operators in normal mode
 set autoindent		"copies indent from current line to the next line
 set expandtab		"tabs will expand to whitespace characters
 
@@ -66,6 +75,14 @@ set clipboard=unnamed
 "folding
 set foldenable
 set foldmethod=indent
+
+"airline - also enable for tabline
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#tabs_label = 't'
+let g:airline#extensions#tabline#buffers_label = 'b'
 
 "keys
 set backspace=indent,eol,start      "allow backspacing over everything
@@ -85,20 +102,27 @@ let g:lsc_server_commands = {
  \  'cpp': {
  \    'command': 'clangd --background-index',
  \    'suppress_stderr': v:true,
+ \  },
+ \  'cmake': {
+ \    'command': 'cmake-language-server',
+ \    'suppress_stderr': v:true,
  \  }
  \}
+
 let g:lsc_auto_map = {
+ \  'defaults': v:true,
  \  'GoToDefinition': 'gd',
- \  'FindReferences': 'gr',
- \  'Rename': 'gR',
- \  'ShowHover': 'K',
- \  'FindCodeActions': 'ga',
  \  'Completion': 'omnifunc',
+ \  'SignatureHelp': 'gm'
  \}
 let g:lsc_enable_autocomplete  = v:true
 let g:lsc_enable_diagnostics   = v:true
 let g:lsc_reference_highlights = v:true
 let g:lsc_trace_level          = 'off'
+
+"Supertab scroll from top
+let g:SuperTabDefaultCompletionType        = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 "Configure clang-format
 let g:clang_format#code_style = "llvm"
