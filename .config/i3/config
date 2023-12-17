@@ -32,7 +32,7 @@ bindsym $mod+b exec --no-startup-id loginctl lock-session
 exec --no-startup-id nm-applet
 
 #Bluetooth manager tray
-exec --no-startup-id blueman-applet 
+exec --no-startup-id blueberry-tray
 
 #Use gnome-polkit
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
