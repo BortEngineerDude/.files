@@ -18,10 +18,6 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME"
 #.local/bin PATH
 export PATH=$PATH:$HOME/.local/bin
 
-#fancy line
-powerline-daemon -q
-. /usr/share/powerline/bindings/zsh/powerline.zsh
-
 #history
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -62,10 +58,10 @@ autoload -U colors
 colors
 
 #prompt
-#autoload -U promptinit
-#promptinit
+autoload -U promptinit
+promptinit
 
-#PROMPT="[%B%F{32}%n%f%b@%B%F{240}%m%f%b] %0~ >"
+PROMPT="[%B%F{32}%n%f%b@%B%F{240}%m%f%b] %0~ >"
 
 #autocompletion
 autoload -Uz compinit
