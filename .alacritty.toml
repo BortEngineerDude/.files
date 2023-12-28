@@ -1,0 +1,54 @@
+[colors.bright]
+black = "0x202020"
+blue = "0x7c7cff"
+cyan = "0xc0c0c0"
+green = "0xf8f8f8"
+magenta = "0xadadad"
+red = "0x464646"
+white = "0x999eac"
+yellow = "0xeeeeee"
+
+[colors.normal]
+black = "0x000000"
+blue = "0x9999ff"
+cyan = "0x8a8a8a"
+green = "0xc4c4c4"
+magenta = "0x717171"
+red = "0x6b6b6b"
+white = "0xb5bbca"
+yellow = "0xb3b3b3"
+
+[colors.primary]
+background = "0x000000"
+foreground = "0xdddddd"
+
+[font]
+size = 9
+
+[font.bold]
+family = "FiraCode Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "FiraCode Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style = "Light"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "K"
+mode = "~Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ClearHistory"
+key = "K"
+mode = "~Vi|~Search"
+mods = "Control"
