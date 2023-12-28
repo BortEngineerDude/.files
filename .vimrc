@@ -26,6 +26,9 @@ Plug 'vim-airline/vim-airline-themes'
 "Better autocompletion control
 Plug 'ervandew/supertab'
 
+"Better C++ syntax highlight
+Plug 'bfrg/vim-cpp-modern', { 'do': 'mkdir -p ~/.vim/after/syntax;cp ~/.vim/userplugins/vim-cpp-modern/after/syntax/* ~/.vim/after/syntax' }
+
 call plug#end()
 
 nnoremap <silent> <Leader>ee :<C-u>Fern <C-r>=<SID>smart_path()<CR><CR>
@@ -89,6 +92,14 @@ set backspace=indent,eol,start      "allow backspacing over everything
 
 "make vim accept commands while using russian layout
 set langmap=йЙцЦуУкКеЕнНгГшШщЩзЗхХъЪфФыЫвВаАпПрРоОлЛдДжЖэЭяЯчЧсСмМиИтТьЬбБюЮ.\\,;qQwWeErRtTyYuUiIoOpP[{]}aAsSdDfFgGhHjJkKlL;:'\"zZxXcCvVbBnNmM\\,<.>/? 
+
+"c++ syntax highlight
+" Enable function highlighting (affects both C and C++ files)
+let g:cpp_function_highlight = 1
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
 
 "LSC(Language Server Client) - autocomplete, rename all instances and other neat stuff, as seen in IDE's
 syntax on
