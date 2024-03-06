@@ -33,7 +33,9 @@ call plug#end()
 
 nnoremap <silent> <Leader>ee :<C-u>Fern <C-r>=<SID>smart_path()<CR><CR>
 
-nnoremap <C-s> :wa <bar> :mksession! session.vim<CR><CR>
+"session save options
+set ssop=buffers,curdir,folds,tabpages,winsize
+nnoremap <C-s> :wa <bar> :mks!<CR><CR>
 
 "Return a parent directory of the current buffer when the buffer is a file.
 "Otherwise it returns a current working directory.

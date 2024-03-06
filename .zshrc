@@ -76,12 +76,12 @@ case $OS in
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     ;;
-    "debian")
+    "debian" | "ubuntu")
         source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     ;;
     *)
-        echo "Unknown distro, can not source some zsh addons"
+        echo "Unknown distro [${OS}], can not source some zsh addons"
     ;;
 esac
 
