@@ -19,10 +19,10 @@ tmpbg='/tmp/screen.png'
 xfce4-screenshooter -f -s "$tmpbg"
 
 # blur the screenshot by resizing and scaling back up
-convert "$tmpbg" -filter Gaussian -thumbnail 10% -sample 1000% "$tmpbg"
+magick "$tmpbg" -filter Gaussian -thumbnail 10% -sample 1000% "$tmpbg"
 
 # overlay the icon onto the screenshot
-convert "$tmpbg" "$icon" -gravity center -composite "$tmpbg"
+magick "$tmpbg" "$icon" -gravity center -composite "$tmpbg"
 
 # lock the screen with the blurred screenshot
 i3lock -i "$tmpbg"
