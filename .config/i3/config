@@ -229,7 +229,7 @@ bar
 # User config
 
 # For some reason, localectl can't handle 3 layouts simultaniously. Using this workaround:
-exec --no-startup-id setxkbmap -layout "us,ru,rs" -option "grp:alt_shift_toggle"
+exec --no-startup-id setxkbmap -layout "us,ru,rs" -variant ",,latin" -option "grp:win_space_toggle"
 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom
