@@ -79,12 +79,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
 # split in horizontal orientation
 bindsym $mod+g split h
 
@@ -228,11 +222,14 @@ bar
 
 # User config
 
+# Enforce minimum size for pavucontrol-qt
+for_window [class="pavucontrol-qt"] resize set width 950
+
 # For some reason, localectl can't handle 3 layouts simultaniously. Using this workaround:
 exec --no-startup-id setxkbmap -layout "us,ru,rs" -variant ",,latin" -option "grp:win_space_toggle"
 
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id picom
+exec --no-startup-id corectrl --minimize-systray -m "Custom"
+exec --no-startup-id dunst
 
 bindsym $mod+ctrl+h move workspace to output right
 bindsym $mod+ctrl+l move workspace to output left
