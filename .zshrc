@@ -40,15 +40,12 @@ bindkey "5D" backward-word
 bindkey "eOd" emacs-backward-word
 bindkey "ee[C" forward-word
 bindkey "ee[D" backward-word
-bindkey "^H" backward-delete-word
-# for rxvt
-bindkey "^[[8~" end-of-line
-bindkey "^[[7~" beginning-of-line
+#bindkey "^H" backward-delete-word
 # for non RH/Debian xterm, can't hurt for RH/DEbian xterm
 bindkey "eOH" beginning-of-line
 bindkey "eOF" end-of-line
 # for freebsd console
-bindkey "^[[H" beginning-of-line
+#bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 # completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
