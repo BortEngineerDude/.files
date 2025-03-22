@@ -19,7 +19,7 @@ window#waybar {
 #workspaces button {
     background: transparent;
     color: white;
-    padding: 2 5pt;
+    padding: 2pt 5pt;
 }
 
 #workspaces button.focused {
@@ -35,7 +35,7 @@ window#waybar {
 }
 
 #idle_inhibitor, #clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode {
-    padding: 2 6pt;
+    padding: 2pt 6pt;
 }
 
 #clock {
@@ -44,27 +44,41 @@ window#waybar {
 #battery {
 }
 
-#battery icon {
-    color: red;
+@keyframes blink-charging {
+  to {
+    color: MediumSeaGreen
+  }
 }
 
-#battery.charging {
-}
-
-@keyframes blink {
-    to {
+@keyframes blink-warning {
+    50% {
         background-color: #ffffff;
         color: black;
     }
 }
 
-#battery.warning:not(.charging) {
-    color: #f67400;
-    animation-name: blink;
-    animation-duration: 0.5s;
+#battery.charging {
+    animation-name: blink-charging;
+    animation-duration: 3.0s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#battery.warning:not(.charging) {
+    color: #f67400;
+    animation-name: blink-warning;
+    animation-duration: 1s;
+    animation-timing-function: steps(2, start);
+    animation-iteration-count: infinite;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff3333;
+    animation-name: blink-warning;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(2, start);
+    animation-iteration-count: infinite;
 }
 
 #cpu {
